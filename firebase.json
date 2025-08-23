@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "hafizfadzil-website",
     "public": ".",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "cleanUrls": true,
@@ -15,6 +16,10 @@
       {
         "source": "/config/app-config.json",
         "headers": [{ "key": "Cache-Control", "value": "no-store" }]
+      },
+      {
+        "source": "**/index.html",
+        "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
       }
     ]
   }
