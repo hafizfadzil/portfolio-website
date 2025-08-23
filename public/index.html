@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hafiz Fadzil — Business Consultant</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Hafiz Fadzil Home">
+      <img src="images/logo-placeholder.svg" alt="" width="28" height="28" />
+      <span>Hafiz Fadzil</span>
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <nav class="site-nav" data-nav>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a class="btn btn--primary" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero__content container">
+      <div class="hero__text">
+        <h1 class="headline">I help businesses grow with clear strategy & execution.</h1>
+        <p class="subhead">Consulting focused on revenue ops, offers & funnels, and operational efficiency.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#work">View Work</a>
+          <a class="btn btn--ghost" href="#services">See Services</a>
+        </div>
+      </div>
+
+      <!-- Place YOUR actual portrait here (right side). Keep transparent PNG if possible -->
+      <picture class="hero__photo">
+        <!-- High-DPI desktop -->
+        <source srcset="images/about/profile-hafiz@2x.png 2x, images/about/profile-hafiz.png 1x" media="(min-width: 769px)">
+        <!-- Mobile -->
+        <img src="images/about/profile-hafiz.png" alt="Hafiz Fadzil portrait" loading="eager" decoding="async" />
+      </picture>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section container">
+    <header class="section__header">
+      <h2>Services</h2>
+      <p>Practical, outcome-driven consulting for SMEs and creators.</p>
+    </header>
+
+    <div class="grid cards-3 reveal">
+      <article class="card">
+        <img src="images/services/service-strategy.jpg" alt="Strategy workshop" loading="lazy" width="640" height="428">
+        <h3>Business Strategy</h3>
+        <p>Offer design, pricing, and go-to-market plans that convert.</p>
+      </article>
+      <article class="card">
+        <img src="images/services/service-ops.jpg" alt="Operations improvement" loading="lazy" width="640" height="428">
+        <h3>Operations Improvement</h3>
+        <p>Streamline delivery and support with simple SOPs & automations.</p>
+      </article>
+      <article class="card">
+        <img src="images/services/service-marketing.jpg" alt="Marketing analytics" loading="lazy" width="640" height="428">
+        <h3>Funnel & Ads</h3>
+        <p>Lean funnels, pages, and ads to profitably acquire customers.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section id="work" class="section alt">
+    <div class="container">
+      <header class="section__header">
+        <h2>Selected Work</h2>
+        <p>Case studies and experiments.</p>
+      </header>
+
+      <div class="grid cards-3 reveal">
+        <article class="card">
+          <img src="images/portfolio/project-1.jpg" alt="Project One" loading="lazy" width="640" height="428">
+          <h3>Offer Makeover</h3>
+          <p>Raised close rate by 22% in 6 weeks.</p>
+        </article>
+        <article class="card">
+          <img src="images/portfolio/project-2.jpg" alt="Project Two" loading="lazy" width="640" height="428">
+          <h3>Ops Clean-up</h3>
+          <p>Cut delivery time by 35% with 4 SOPs.</p>
+        </article>
+        <article class="card">
+          <img src="images/portfolio/project-3.jpg" alt="Project Three" loading="lazy" width="640" height="428">
+          <h3>Funnel Sprint</h3>
+          <p>3.1x ROAS on a RM3k test budget.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section container">
+    <div class="about reveal">
+      <img class="about__img" src="images/about/profile-hafiz-2.jpg" alt="Hafiz speaking" loading="lazy" width="720" height="480">
+      <div class="about__text">
+        <h2>About Me</h2>
+        <p>Consultant & speaker based in Cyberjaya. I help founders simplify growth with structured offers, clear funnels, and tidy operations.</p>
+        <ul class="ticks">
+          <li>Consultation & public speaking</li>
+          <li>Hands-on systems setup (Notion, AI, CRM)</li>
+          <li>Simple dashboards & weekly cadence</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section contact">
+    <div class="container contact__box reveal">
+      <h2>Let’s work together</h2>
+      <p>Email <a href="mailto:hello@hafizfadzil.com">hello@hafizfadzil.com</a> or use the form below.</p>
+      <a class="btn btn--primary" href="mailto:hello@hafizfadzil.com">Email Me</a>
+      <div class="contact__social">
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        <a href="#" aria-label="TikTok">TikTok</a>
+        <a href="#" aria-label="YouTube">YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Hafiz Fadzil. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
