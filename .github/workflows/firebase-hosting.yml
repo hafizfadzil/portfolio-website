@@ -1,4 +1,4 @@
-name: Deploy to Firebase Hosting
+name: Deploy to Firebase Hosting (conditional build)
 
 on:
   push:
@@ -12,10 +12,37 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Detect if we have a build (package.json)
+      - name: Check for package.json
+        id: has_node
+        run: |
+          if [ -f "package.json" ]; then
+            echo "found=true" >> $GITHUB_OUTPUT
+          else
+            echo "found=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup Node
+        if: steps.has_node.outputs.found == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        if: steps.has_node.outputs.found == 'true'
+        run: npm ci
+
+      - name: Build
+        if: steps.has_node.outputs.found == 'true'
+        run: npm run build
+
+      # If you output to a build dir, set "public" in firebase.json to that dir.
+      # Otherwise leave it as "public" or "." per your structure.
+
       - name: Install Firebase CLI
         run: npm install -g firebase-tools
 
-      - name: Deploy to Firebase Hosting
+      - name: Deploy
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: firebase deploy --only hosting --project hafizfadzil-website --non-interactive
