@@ -342,3 +342,69 @@ a { color: inherit; }
 .hero--bg .lead,
 .hero--bg .btn--ghost { color: #ffffff; }
 .hero--bg .lead { color: #e7ebf2; }
+
+
+/* ===== PATCH: Header readability & hero cover ===== */
+
+/* 1) Header/nav: force bright text & clearer hover/active */
+.site-header,
+.header--solid {
+  background: rgba(18, 22, 26, 0.95);
+  backdrop-filter: saturate(120%) blur(10px);
+}
+
+.site-header .brand__name,
+.site-header .nav__link {
+  color: #ffffff !important;          /* make links visible even at rest */
+}
+.site-header .nav__link:hover,
+.site-header .nav__link:focus-visible {
+  background: rgba(255,255,255,0.10) !important;
+}
+
+/* Active state: tasteful brand color, but still readable */
+.site-header .nav__link.active {
+  color: var(--brand) !important;
+  background: rgba(185,146,255,0.15) !important;
+}
+
+/* 2) Hero background truly covers + centers content vertically */
+.hero--bg {
+  position: relative;
+  background-image: var(--hero-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: clamp(480px, 75vh, 960px);    /* makes it feel like a real hero */
+  display: flex;
+  align-items: center;
+  padding-top: clamp(72px, 8vh, 120px);     /* keep your spacing */
+  padding-bottom: clamp(72px, 12vh, 160px);
+}
+.hero--bg .container { position: relative; z-index: 1; }
+.hero--bg::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.50) 0%,
+    rgba(0,0,0,0.40) 40%,
+    rgba(0,0,0,0.30) 100%
+  );
+  pointer-events: none;
+}
+.hero--bg .h1,
+.hero--bg .lead,
+.hero--bg .btn--ghost { color: #fff; }
+.hero--bg .lead { color: #e7ebf2; }
+
+/* 3) OPTIONAL: Don’t highlight “Services” until user actually scrolls
+   (If you still see Services highlighted on load, this neutralizes it) */
+.nav__link.active { background-clip: padding-box; }
+@media (max-width: 1200px) {
+  /* Narrower rootMargin in JS sometimes picks #services right away.
+     This style keeps it subtle if that happens. */
+  .site-header .nav__link.active {
+    background: rgba(185,146,255,0.12) !important;
+  }
+}
