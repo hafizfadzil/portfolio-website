@@ -108,7 +108,11 @@ a { color: inherit; }
    3) Header & Navigation
 ---------------------------------*/
 .site-header {
-  position: sticky; top: 0; z-index: 50;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* keep above everything */
   background: rgba(18,22,26,0.95);
   backdrop-filter: saturate(120%) blur(8px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -332,4 +336,8 @@ a { color: inherit; }
 ---------------------------------*/
 @media (hover: hover) {
   a:hover { text-decoration: none; }
+}
+
+body {
+  padding-top: var(--header-h);
 }
