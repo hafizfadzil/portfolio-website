@@ -3,140 +3,202 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hafiz Fadzil — Business Consultant</title>
+  <title>Hafiz Ahmad — Business Consultant</title>
+  <meta name="description" content="Business consulting services: strategy, sales & marketing, and operations support." />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hafiz Ahmad — Business Consultant">
+  <meta property="og:description" content="Strategy, sales & marketing, and operations support." />
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://your-domain.example" />
+  <meta property="og:image" content="/assets/og-image.jpg" />
 
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="favicon.ico" />
+  <link rel="preload" href="/assets/hero.jpg" as="image" imagesrcset="/assets/hero@768.jpg 768w, /assets/hero@1280.jpg 1280w, /assets/hero@1920.jpg 1920w" imagesizes="100vw" />
+  <link rel="stylesheet" href="./style.css" />
+  <script defer src="./js/script.js"></script>
 </head>
+
 <body>
-  <!-- Header / Nav -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
   <header class="site-header">
-    <a class="brand" href="#home" aria-label="Hafiz Fadzil Home">
-      <img src="images/logo-placeholder.svg" alt="" width="28" height="28" />
-      <span>Hafiz Fadzil</span>
-    </a>
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <!-- Replace with your logo if you have one -->
+        <img src="/assets/logo.svg" alt="" class="brand__logo" height="36" />
+        <span class="brand__name">Horizon Forward</span>
+      </a>
 
-    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="nav-toggle-bar"></span>
-    </button>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="sr-only">Open menu</span>
+      </button>
 
-    <nav class="site-nav" data-nav>
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a class="btn btn--primary" href="#contact">Contact</a>
-    </nav>
+      <nav id="site-nav" class="nav" data-collapsible>
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#services">Services</a></li>
+          <li><a class="nav__link" href="#work">Projects</a></li>
+          <li><a class="nav__link" href="#about">About</a></li>
+          <li><a class="nav__link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="hero__content container">
-      <div class="hero__text">
-        <h1 class="headline">I help businesses grow with clear strategy & execution.</h1>
-        <p class="subhead">Consulting focused on revenue ops, offers & funnels, and operational efficiency.</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="#work">View Work</a>
-          <a class="btn btn--ghost" href="#services">See Services</a>
+  <main id="main">
+    <!-- HERO -->
+    <section class="section hero" id="home" aria-label="Introduction">
+      <div class="container hero__grid">
+        <div class="hero__text reveal">
+          <h1 class="h1">Business consulting that <span class="accent">moves you forward</span>.</h1>
+          <p class="lead">
+            I help SMEs sharpen strategy, build predictable sales, and streamline operations — without bloated decks or guesswork.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#contact">Book a discovery call</a>
+            <a class="btn btn--ghost" href="#services">See services</a>
+          </div>
+        </div>
+
+        <!-- TIP: put a mobile-friendly image (3:4 or 4:5) here -->
+        <picture class="hero__media reveal">
+          <!-- Place your images in /assets and keep names consistent -->
+          <source srcset="/assets/hero@1280.jpg" media="(min-width: 768px)">
+          <img src="/assets/hero@768.jpg" alt="Consulting collaboration" loading="eager" width="960" height="1200">
+        </picture>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services" aria-label="Services">
+      <div class="container">
+        <header class="section__head reveal">
+          <h2 class="h2">Services</h2>
+          <p class="muted">Engagements tailored for new & growing business owners.</p>
+        </header>
+
+        <div class="cards">
+          <article class="card reveal">
+            <h3 class="h4">Go‑to‑Market Sprint</h3>
+            <p>Validate offer, sharpen messaging, and set up a lean funnel in 14–21 days.</p>
+            <ul class="list">
+              <li>ICP & offer refinement</li>
+              <li>Landing + lead capture</li>
+              <li>Outbound & social scripts</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3 class="h4">Sales Ops Setup</h3>
+            <p>Simple CRM, pipeline, and weekly cadence so you don’t drop leads.</p>
+            <ul class="list">
+              <li>CRM & pipeline design</li>
+              <li>Tracking & dashboards</li>
+              <li>Weekly review rhythm</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3 class="h4">Scale Readiness</h3>
+            <p>Hiring basics, SOPs, and light analytics — ready for your next stage.</p>
+            <ul class="list">
+              <li>Role scorecards</li>
+              <li>Core SOPs</li>
+              <li>KPI sheets</li>
+            </ul>
+          </article>
         </div>
       </div>
-      
-    </div>
-  </section>
+    </section>
 
-  <!-- Services -->
-  <section id="services" class="section container">
-    <header class="section__header">
-      <h2>Services</h2>
-      <p>Practical, outcome-driven consulting for SMEs and creators.</p>
-    </header>
+    <!-- PROJECTS -->
+    <section class="section alt" id="work" aria-label="Projects">
+      <div class="container">
+        <header class="section__head reveal">
+          <h2 class="h2">Selected Work</h2>
+          <p class="muted">A few recent outcomes.</p>
+        </header>
 
-    <div class="grid cards-3 reveal">
-      <article class="card">
-        <img src="images/services/service-strategy.jpg" alt="Strategy workshop" loading="lazy" width="640" height="428">
-        <h3>Business Strategy</h3>
-        <p>Offer design, pricing, and go-to-market plans that convert.</p>
-      </article>
-      <article class="card">
-        <img src="images/services/service-ops.jpg" alt="Operations improvement" loading="lazy" width="640" height="428">
-        <h3>Operations Improvement</h3>
-        <p>Streamline delivery and support with simple SOPs & automations.</p>
-      </article>
-      <article class="card">
-        <img src="images/services/service-marketing.jpg" alt="Marketing analytics" loading="lazy" width="640" height="428">
-        <h3>Funnel & Ads</h3>
-        <p>Lean funnels, pages, and ads to profitably acquire customers.</p>
-      </article>
-    </div>
-  </section>
+        <div class="grid grid--work">
+          <!-- Replace the placeholders with real images (ensure 3:2 or 16:9 for desktop) -->
+          <figure class="work-card reveal">
+            <img src="/assets/work-1.jpg" alt="Lead gen revamp case study" loading="lazy" width="800" height="534">
+            <figcaption>
+              <h3 class="h5">B2B Funnel Rebuild</h3>
+              <p class="small muted">+38% MQLs in 60 days</p>
+            </figcaption>
+          </figure>
 
-  <!-- Work -->
-  <section id="work" class="section alt">
-    <div class="container">
-      <header class="section__header">
-        <h2>Selected Work</h2>
-        <p>Case studies and experiments.</p>
-      </header>
+          <figure class="work-card reveal">
+            <img src="/assets/work-2.jpg" alt="Sales pipeline redesign case study" loading="lazy" width="800" height="534">
+            <figcaption>
+              <h3 class="h5">Simple Sales Ops</h3>
+              <p class="small muted">2× follow‑ups, 20% win‑rate ↑</p>
+            </figcaption>
+          </figure>
 
-      <div class="grid cards-3 reveal">
-        <article class="card">
-          <img src="images/portfolio/project-1.jpg" alt="Project One" loading="lazy" width="640" height="428">
-          <h3>Offer Makeover</h3>
-          <p>Raised close rate by 22% in 6 weeks.</p>
-        </article>
-        <article class="card">
-          <img src="images/portfolio/project-2.jpg" alt="Project Two" loading="lazy" width="640" height="428">
-          <h3>Ops Clean-up</h3>
-          <p>Cut delivery time by 35% with 4 SOPs.</p>
-        </article>
-        <article class="card">
-          <img src="images/portfolio/project-3.jpg" alt="Project Three" loading="lazy" width="640" height="428">
-          <h3>Funnel Sprint</h3>
-          <p>3.1x ROAS on a RM3k test budget.</p>
-        </article>
+          <figure class="work-card reveal">
+            <img src="/assets/work-3.jpg" alt="Hiring & SOPs case study" loading="lazy" width="800" height="534">
+            <figcaption>
+              <h3 class="h5">Hiring + SOP Starter</h3>
+              <p class="small muted">First 2 hires onboarded in 3 weeks</p>
+            </figcaption>
+          </figure>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About -->
-  <section id="about" class="section container">
-    <div class="about reveal">
-      <img class="about__img" src="images/about/profile-hafiz-2.jpg" alt="Hafiz speaking" loading="lazy" width="720" height="480">
-      <div class="about__text">
-        <h2>About Me</h2>
-        <p>Consultant & speaker based in Cyberjaya. I help founders simplify growth with structured offers, clear funnels, and tidy operations.</p>
-        <ul class="ticks">
-          <li>Consultation & public speaking</li>
-          <li>Hands-on systems setup (Notion, AI, CRM)</li>
-          <li>Simple dashboards & weekly cadence</li>
-        </ul>
+    <!-- ABOUT -->
+    <section class="section" id="about" aria-label="About">
+      <div class="container">
+        <div class="about reveal">
+          <img class="about__img" src="/assets/portrait.jpg" alt="Hafiz Ahmad" loading="lazy" width="480" height="600">
+          <div class="about__text">
+            <h2 class="h2">About</h2>
+            <p>I’m Hafiz, a business consultant focused on practical execution: strategy you can ship, systems you can keep, and sales you can repeat.</p>
+            <ul class="list">
+              <li>Based in Cyberjaya, Selangor</li>
+              <li>Consulting, coaching & public speaking</li>
+              <li>Comfortable with tech & e‑commerce</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact" class="section contact">
-    <div class="container contact__box reveal">
-      <h2>Let’s work together</h2>
-      <p>Email <a href="mailto:hello@hafizfadzil.com">hello@hafizfadzil.com</a> or use the form below.</p>
-      <a class="btn btn--primary" href="mailto:hello@hafizfadzil.com">Email Me</a>
-      <div class="contact__social">
-        <a href="#" aria-label="LinkedIn">LinkedIn</a>
-        <a href="#" aria-label="TikTok">TikTok</a>
-        <a href="#" aria-label="YouTube">YouTube</a>
+    <!-- CONTACT -->
+    <section class="section alt" id="contact" aria-label="Contact">
+      <div class="container">
+        <header class="section__head reveal">
+          <h2 class="h2">Let’s talk</h2>
+          <p class="muted">Tell me a bit about your goals — I’ll reply within 1–2 business days.</p>
+        </header>
+
+        <!-- If using Zoho Mail, set your action to their form endpoint or a serverless function -->
+        <form class="form reveal" action="#" method="post" data-netlify="true">
+          <div class="form__row">
+            <label class="form__label">Name
+              <input class="input" type="text" name="name" required autocomplete="name" />
+            </label>
+            <label class="form__label">Email
+              <input class="input" type="email" name="email" required autocomplete="email" />
+            </label>
+          </div>
+          <label class="form__label">How can I help?
+            <textarea class="textarea" name="message" rows="5" required></textarea>
+          </label>
+          <button class="btn btn--primary" type="submit">Send message</button>
+          <p class="small muted">Or email <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></p>
+        </form>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <small>© <span id="year"></span> Hafiz Fadzil. All rights reserved.</small>
+    <div class="container footer-inner">
+      <p class="small muted">© <span id="year"></span> Horizon Forward. All rights reserved.</p>
+      <a class="to-top" href="#home">Back to top ↑</a>
     </div>
   </footer>
-
-  <script src="js/main.js" defer></script>
-  <script type="module" src="app.js"></script>
 </body>
 </html>
