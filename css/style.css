@@ -408,3 +408,29 @@ a { color: inherit; }
     background: rgba(185,146,255,0.12) !important;
   }
 }
+/* ==== Section: Selected Work background ==== */
+#work.section {
+  /* Pick up the main brand accent from :root */
+  background: var(--brand);
+  color: #0b0d10; /* dark text for contrast */
+}
+
+#work .h2,
+#work .h5,
+#work p,
+#work .muted {
+  color: #0b0d10; /* override text to be readable */
+}
+
+#work .work-card {
+  background: #fff; /* cards pop against brand color */
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+#work .work-card figcaption h3 {
+  color: #0b0d10;
+}
+#work .work-card figcaption p {
+  color: #333;
+}
