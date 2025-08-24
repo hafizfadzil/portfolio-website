@@ -11,7 +11,14 @@
   <meta property="og:description" content="Strategy, sales & marketing, and operations support." />
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://your-domain.example" />
-  <meta property="og:image" content="/asset/og-image.jpg" />
+  <meta property="og:image" content="/assets/og-image.jpg" />
+
+  <!-- Preload hero (lets browser choose best size for viewport) -->
+  <link rel="preload"
+        as="image"
+        href="/asset/hero/hero@768.jpg"
+        imagesrcset="/asset/hero/hero@768.jpg 768w, /asset/hero/hero@1280.jpg 1280w, /asset/hero/hero@1920.jpg 1920w"
+        imagesizes="100vw" />
 
   <link rel="stylesheet" href="./css/style.css" />
   <script defer src="./js/script.js"></script>
@@ -20,10 +27,11 @@
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
 
+  <!-- Fixed header (always on top) -->
   <header class="site-header header--solid">
     <div class="container header-inner">
       <a class="brand" href="/">
-        <img src="/asset/logo.svg" alt="" class="brand__logo" height="36" />
+        <img src="/assets/logo.svg" alt="" class="brand__logo" height="36" />
         <span class="brand__name">Horizon Forward</span>
       </a>
 
@@ -44,9 +52,9 @@
   </header>
 
   <main id="main">
-    <!-- HERO — full-bleed background image using <picture> for responsive sources -->
+    <!-- HERO — full‑bleed background using <picture> (mobile/tablet/desktop) -->
     <section class="section hero hero--bg" id="home" aria-label="Introduction">
-      <!-- Decorative background layer (uses /asset/hero/*) -->
+      <!-- Background layer -->
       <div class="hero__bg" aria-hidden="true">
         <picture>
           <!-- Large desktops -->
@@ -54,8 +62,13 @@
           <!-- Tablets / small desktops -->
           <source srcset="/asset/hero/hero@1280.jpg" media="(min-width: 769px)">
           <!-- Mobile fallback -->
-		  <source srcset="/asset/hero/hero@768.jpg" media="(min-width: 375px)">
-          <!--img src="/asset/hero/hero@768.jpg" alt="" loading="eager" width="960" height="1200"-->
+          <img
+            src="/asset/hero/hero@768.jpg"
+            srcset="/asset/hero/hero@768.jpg 768w, /asset/hero/hero@1280.jpg 1280w, /asset/hero/hero@1920.jpg 1920w"
+            sizes="100vw"
+            alt=""
+            width="960" height="1200"
+            loading="eager" decoding="async" fetchpriority="high">
         </picture>
       </div>
 
@@ -125,7 +138,7 @@
 
         <div class="grid grid--work">
           <figure class="work-card reveal">
-            <img src="/asset/work-1.jpg" alt="Lead gen revamp case study" loading="lazy" width="1200" height="800">
+            <img src="/assets/work-1.jpg" alt="Lead gen revamp case study" loading="lazy" width="1200" height="800">
             <figcaption>
               <h3 class="h5">B2B Funnel Rebuild</h3>
               <p class="small muted">+38% MQLs in 60 days</p>
@@ -133,7 +146,7 @@
           </figure>
 
           <figure class="work-card reveal">
-            <img src="/asset/work-2.jpg" alt="Sales pipeline redesign case study" loading="lazy" width="1200" height="800">
+            <img src="/assets/work-2.jpg" alt="Sales pipeline redesign case study" loading="lazy" width="1200" height="800">
             <figcaption>
               <h3 class="h5">Simple Sales Ops</h3>
               <p class="small muted">2× follow‑ups, 20% win‑rate ↑</p>
@@ -141,7 +154,7 @@
           </figure>
 
           <figure class="work-card reveal">
-            <img src="/asset/work-3.jpg" alt="Hiring & SOPs case study" loading="lazy" width="1200" height="800">
+            <img src="/assets/work-3.jpg" alt="Hiring & SOPs case study" loading="lazy" width="1200" height="800">
             <figcaption>
               <h3 class="h5">Hiring + SOP Starter</h3>
               <p class="small muted">First 2 hires onboarded in 3 weeks</p>
@@ -155,7 +168,7 @@
     <section class="section" id="about" aria-label="About">
       <div class="container">
         <div class="about reveal">
-          <img class="about__img" src="/asset/portrait.png" alt="Hafiz Ahmad" loading="lazy" width="800" height="1000">
+          <img class="about__img" src="/assets/portrait.jpg" alt="Hafiz Ahmad" loading="lazy" width="800" height="1000">
           <div class="about__text">
             <h2 class="h2">About</h2>
             <p>I’m Hafiz, a business consultant focused on practical execution: strategy you can ship, systems you can keep, and sales you can repeat.</p>
