@@ -13,18 +13,17 @@
   <meta property="og:url" content="https://your-domain.example" />
   <meta property="og:image" content="/assets/og-image.jpg" />
 
-  <link rel="preload" href="/assets/hero.jpg" as="image" imagesrcset="/assets/hero@768.jpg 768w, /assets/hero@1280.jpg 1280w, /assets/hero@1920.jpg 1920w" imagesizes="100vw" />
-  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./style.css" />
   <script defer src="./js/script.js"></script>
 </head>
 
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <header class="site-header">
+  <!-- Add header--solid for stronger background + higher-contrast links -->
+  <header class="site-header header--solid">
     <div class="container header-inner">
       <a class="brand" href="/">
-        <!-- Replace with your logo if you have one -->
         <img src="/assets/logo.svg" alt="" class="brand__logo" height="36" />
         <span class="brand__name">Horizon Forward</span>
       </a>
@@ -34,7 +33,7 @@
         <span class="sr-only">Open menu</span>
       </button>
 
-      <nav id="site-nav" class="nav" data-collapsible>
+      <nav id="site-nav" class="nav" data-collapsible aria-hidden="true">
         <ul class="nav__list">
           <li><a class="nav__link" href="#services">Services</a></li>
           <li><a class="nav__link" href="#work">Projects</a></li>
@@ -46,8 +45,13 @@
   </header>
 
   <main id="main">
-    <!-- HERO -->
-    <section class="section hero" id="home" aria-label="Introduction">
+    <!-- HERO now uses the background image (full-bleed) -->
+    <section
+      class="section hero hero--bg"
+      id="home"
+      aria-label="Introduction"
+      style="--hero-image: url('/assets/hero@1920.jpg');"
+    >
       <div class="container hero__grid">
         <div class="hero__text reveal">
           <h1 class="h1">Business consulting that <span class="accent">moves you forward</span>.</h1>
@@ -59,13 +63,6 @@
             <a class="btn btn--ghost" href="#services">See services</a>
           </div>
         </div>
-
-        <!-- TIP: put a mobile-friendly image (3:4 or 4:5) here -->
-        <picture class="hero__media reveal">
-          <!-- Place your images in /assets and keep names consistent -->
-          <source srcset="/assets/hero@1280.jpg" media="(min-width: 768px)">
-          <img src="/assets/hero@768.jpg" alt="Consulting collaboration" loading="eager" width="960" height="1200">
-        </picture>
       </div>
     </section>
 
@@ -120,9 +117,8 @@
         </header>
 
         <div class="grid grid--work">
-          <!-- Replace the placeholders with real images (ensure 3:2 or 16:9 for desktop) -->
           <figure class="work-card reveal">
-            <img src="/assets/work-1.jpg" alt="Lead gen revamp case study" loading="lazy" width="800" height="534">
+            <img src="/assets/work-1.jpg" alt="Lead gen revamp case study" loading="lazy" width="1200" height="800">
             <figcaption>
               <h3 class="h5">B2B Funnel Rebuild</h3>
               <p class="small muted">+38% MQLs in 60 days</p>
@@ -130,7 +126,7 @@
           </figure>
 
           <figure class="work-card reveal">
-            <img src="/assets/work-2.jpg" alt="Sales pipeline redesign case study" loading="lazy" width="800" height="534">
+            <img src="/assets/work-2.jpg" alt="Sales pipeline redesign case study" loading="lazy" width="1200" height="800">
             <figcaption>
               <h3 class="h5">Simple Sales Ops</h3>
               <p class="small muted">2× follow‑ups, 20% win‑rate ↑</p>
@@ -138,7 +134,7 @@
           </figure>
 
           <figure class="work-card reveal">
-            <img src="/assets/work-3.jpg" alt="Hiring & SOPs case study" loading="lazy" width="800" height="534">
+            <img src="/assets/work-3.jpg" alt="Hiring & SOPs case study" loading="lazy" width="1200" height="800">
             <figcaption>
               <h3 class="h5">Hiring + SOP Starter</h3>
               <p class="small muted">First 2 hires onboarded in 3 weeks</p>
@@ -152,7 +148,7 @@
     <section class="section" id="about" aria-label="About">
       <div class="container">
         <div class="about reveal">
-          <img class="about__img" src="/assets/portrait.png" alt="Hafiz Ahmad" loading="lazy" width="480" height="600">
+          <img class="about__img" src="/assets/portrait.jpg" alt="Hafiz Ahmad" loading="lazy" width="800" height="1000">
           <div class="about__text">
             <h2 class="h2">About</h2>
             <p>I’m Hafiz, a business consultant focused on practical execution: strategy you can ship, systems you can keep, and sales you can repeat.</p>
@@ -174,7 +170,6 @@
           <p class="muted">Tell me a bit about your goals — I’ll reply within 1–2 business days.</p>
         </header>
 
-        <!-- If using Zoho Mail, set your action to their form endpoint or a serverless function -->
         <form class="form reveal" action="#" method="post" data-netlify="true">
           <div class="form__row">
             <label class="form__label">Name

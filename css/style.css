@@ -297,3 +297,48 @@ a { color: inherit; }
 @media (hover: hover) {
   a:hover { text-decoration: none; }
 }
+
+/* --- Header contrast fixes --- */
+.header--solid {
+  background: rgba(18, 22, 26, 0.95); /* stronger than before */
+  backdrop-filter: saturate(120%) blur(10px);
+}
+.header--solid .brand__name { color: #ffffff; }
+.header--solid .nav__link { color: #ffffff; }
+
+/* Ensure non-hover links are visible */
+.nav__link { color: #eef3f8; }
+.nav__link.active { color: var(--brand); }
+
+/* --- Full-bleed hero background --- */
+.hero--bg {
+  position: relative;
+  /* Use the inline CSS variable provided in index.html */
+  background-image: var(--hero-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* more generous top/bottom for a true "hero" feel */
+  padding-top: clamp(72px, 8vh, 120px);
+  padding-bottom: clamp(72px, 12vh, 160px);
+}
+
+/* soft gradient overlay for text legibility */
+.hero--bg::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.45) 0%,
+    rgba(0,0,0,0.35) 40%,
+    rgba(0,0,0,0.25) 100%
+  );
+  pointer-events: none;
+}
+.hero--bg .container { position: relative; z-index: 1; }
+
+/* Make hero text brighter on the image */
+.hero--bg .h1,
+.hero--bg .lead,
+.hero--bg .btn--ghost { color: #ffffff; }
+.hero--bg .lead { color: #e7ebf2; }
