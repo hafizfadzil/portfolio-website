@@ -238,10 +238,29 @@ a { color: inherit; }
   min-width: 44px; min-height: 44px;
 }
 .btn--primary {
-  background: linear-gradient(135deg, var(--brand), var(--accent-1));
-  color: #0e1020; font-weight: 700;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  border: none;
 }
-.btn--ghost { background: transparent; color: var(--text); }
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  background: var(--accent-1); /* Muted Gold on hover */
+  color: #0b0d10;
+}
+
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--accent-2);
+}
+
+.btn--ghost:hover,
+.btn--ghost:focus-visible {
+  background: var(--accent-2);
+  color: var(--neutral-dark);
+}
 
 /* ------------------------------
    6) Forms
