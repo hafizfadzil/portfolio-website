@@ -20,7 +20,6 @@
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- Add header--solid for stronger background + higher-contrast links -->
   <header class="site-header header--solid">
     <div class="container header-inner">
       <a class="brand" href="/">
@@ -45,13 +44,20 @@
   </header>
 
   <main id="main">
-    <!-- HERO now uses the background image (full-bleed) -->
-    <section
-      class="section hero hero--bg"
-      id="home"
-      aria-label="Introduction"
-      style="--hero-image: url('/assets/hero@1920.jpg');"
-    >
+    <!-- HERO — full-bleed background image using <picture> for responsive sources -->
+    <section class="section hero hero--bg" id="home" aria-label="Introduction">
+      <!-- Decorative background layer (uses /asset/hero/*) -->
+      <div class="hero__bg" aria-hidden="true">
+        <picture>
+          <!-- Large desktops -->
+          <source srcset="/asset/hero/hero@1920.jpg" media="(min-width: 1281px)">
+          <!-- Tablets / small desktops -->
+          <source srcset="/asset/hero/hero@1280.jpg" media="(min-width: 769px)">
+          <!-- Mobile fallback -->
+          <img src="/asset/hero/hero@768.jpg" alt="" loading="eager" width="960" height="1200">
+        </picture>
+      </div>
+
       <div class="container hero__grid">
         <div class="hero__text reveal">
           <h1 class="h1">Business consulting that <span class="accent">moves you forward</span>.</h1>

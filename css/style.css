@@ -16,7 +16,7 @@
   --text: #e6ecf2;
   --muted: #9aa5b1;
 
-  /* Brand accents (refined) */
+  /* Brand accents */
   --brand: #b992ff;      /* soft royal violet */
   --brand-2: #00d1b2;    /* jade teal */
   --brand-3: #ffd166;    /* warm gold */
@@ -109,9 +109,7 @@ a { color: inherit; }
 ---------------------------------*/
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  /* Fallback background */
-  background: rgba(11,13,16,0.9);
-  /* Fancy blur if supported */
+  background: rgba(18,22,26,0.95);
   backdrop-filter: saturate(120%) blur(8px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
   min-height: var(--header-h);
@@ -169,7 +167,7 @@ a { color: inherit; }
 .nav__list { list-style: none; margin: 0; padding: .5rem; display: grid; gap: .25rem; }
 .nav__link {
   display: block; padding: .9rem 1rem; border-radius: .75rem;
-  text-decoration: none; color: var(--text);
+  text-decoration: none; color: #fff; /* high contrast */
 }
 .nav__link:is(:hover, :focus-visible) { background: var(--surface-2); }
 
@@ -192,13 +190,37 @@ a { color: inherit; }
 }
 
 /* ------------------------------
-   4) Hero
+   4) Hero (full‑bleed with <picture>)
 ---------------------------------*/
 .hero { padding-top: 32px; }
+.hero--bg { position: relative; min-height: clamp(480px, 75vh, 960px); display: flex; align-items: center; }
 .hero__grid { display: grid; gap: 1.25rem; align-items: center; }
 .hero__text { max-width: 650px; }
 .hero__cta { display: flex; gap: .75rem; margin-top: 1rem; flex-wrap: wrap; }
-.hero__media img { width: 100%; height: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
+
+/* Background layer fed by <picture> */
+.hero__bg { position: absolute; inset: 0; z-index: 0; }
+.hero__bg picture, .hero__bg img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Soft gradient overlay for legibility */
+.hero--bg::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.50) 0%,
+    rgba(0,0,0,0.40) 40%,
+    rgba(0,0,0,0.30) 100%
+  );
+  pointer-events: none;
+}
+/* Ensure content sits above bg/overlay */
+.hero--bg .container { position: relative; z-index: 1; }
+
+/* Make hero text bright on image */
+.hero--bg .h1,
+.hero--bg .lead,
+.hero--bg .btn--ghost { color: #fff; }
+.hero--bg .lead { color: #e7ebf2; }
 
 /* ------------------------------
    5) Cards, Grids, Buttons, Lists
@@ -276,161 +298,38 @@ a { color: inherit; }
    8) Animations (subtle, GPU-friendly)
 ---------------------------------*/
 .reveal { opacity: 0; transform: translateY(10px); }
-
-/* Primary class used by new JS */
-.reveal.is-visible { opacity: 1; transform: none; transition: opacity 500ms ease, transform 500ms ease; }
-
-/* Backward-compat for old JS that adds .in-view */
+.reveal.is-visible,
 .reveal.in-view { opacity: 1; transform: none; transition: opacity 500ms ease, transform 500ms ease; }
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal,
-  .reveal.is-visible,
-  .reveal.in-view { transition: none; transform: none !important; }
+  .reveal, .reveal.is-visible, .reveal.in-view { transition: none; transform: none !important; }
 }
 
 /* ------------------------------
-   9) Misc polish
+   9) Selected Work background (brand‑tinted)
 ---------------------------------*/
-@media (hover: hover) {
-  a:hover { text-decoration: none; }
-}
-
-/* --- Header contrast fixes --- */
-.header--solid {
-  background: rgba(18, 22, 26, 0.95); /* stronger than before */
-  backdrop-filter: saturate(120%) blur(10px);
-}
-.header--solid .brand__name { color: #ffffff; }
-.header--solid .nav__link { color: #ffffff; }
-
-/* Ensure non-hover links are visible */
-.nav__link { color: #eef3f8; }
-.nav__link.active { color: var(--brand); }
-
-/* --- Full-bleed hero background --- */
-.hero--bg {
-  position: relative;
-  /* Use the inline CSS variable provided in index.html */
-  background-image: var(--hero-image);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  /* more generous top/bottom for a true "hero" feel */
-  padding-top: clamp(72px, 8vh, 120px);
-  padding-bottom: clamp(72px, 12vh, 160px);
-}
-
-/* soft gradient overlay for text legibility */
-.hero--bg::before {
-  content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.45) 0%,
-    rgba(0,0,0,0.35) 40%,
-    rgba(0,0,0,0.25) 100%
-  );
-  pointer-events: none;
-}
-.hero--bg .container { position: relative; z-index: 1; }
-
-/* Make hero text brighter on the image */
-.hero--bg .h1,
-.hero--bg .lead,
-.hero--bg .btn--ghost { color: #ffffff; }
-.hero--bg .lead { color: #e7ebf2; }
-
-
-/* ===== PATCH: Header readability & hero cover ===== */
-
-/* 1) Header/nav: force bright text & clearer hover/active */
-.site-header,
-.header--solid {
-  background: rgba(18, 22, 26, 0.95);
-  backdrop-filter: saturate(120%) blur(10px);
-}
-
-.site-header .brand__name,
-.site-header .nav__link {
-  color: #ffffff !important;          /* make links visible even at rest */
-}
-.site-header .nav__link:hover,
-.site-header .nav__link:focus-visible {
-  background: rgba(255,255,255,0.10) !important;
-}
-
-/* Active state: tasteful brand color, but still readable */
-.site-header .nav__link.active {
-  color: var(--brand) !important;
-  background: rgba(185,146,255,0.15) !important;
-}
-
-/* 2) Hero background truly covers + centers content vertically */
-.hero--bg {
-  position: relative;
-  background-image: var(--hero-image);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: clamp(480px, 75vh, 960px);    /* makes it feel like a real hero */
-  display: flex;
-  align-items: center;
-  padding-top: clamp(72px, 8vh, 120px);     /* keep your spacing */
-  padding-bottom: clamp(72px, 12vh, 160px);
-}
-.hero--bg .container { position: relative; z-index: 1; }
-.hero--bg::before {
-  content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.50) 0%,
-    rgba(0,0,0,0.40) 40%,
-    rgba(0,0,0,0.30) 100%
-  );
-  pointer-events: none;
-}
-.hero--bg .h1,
-.hero--bg .lead,
-.hero--bg .btn--ghost { color: #fff; }
-.hero--bg .lead { color: #e7ebf2; }
-
-/* 3) OPTIONAL: Don’t highlight “Services” until user actually scrolls
-   (If you still see Services highlighted on load, this neutralizes it) */
-.nav__link.active { background-clip: padding-box; }
-@media (max-width: 1200px) {
-  /* Narrower rootMargin in JS sometimes picks #services right away.
-     This style keeps it subtle if that happens. */
-  .site-header .nav__link.active {
-    background: rgba(185,146,255,0.12) !important;
-  }
-}
-/* ==== Section: Selected Work background ==== */
+/* Use brand color block. Change to var(--brand) if you want it linked to tokens */
 #work.section {
-  /* Pick up the main brand accent from :root */
   background: #005058;
-  color: #0b0d10; /* dark text for contrast */
+  color: #0b0d10;
 }
-
 #work .h2,
 #work .h5,
 #work p,
-#work .muted {
-  color: #0b0d10; /* override text to be readable */
-}
-
+#work .muted { color: #0b0d10; }
 #work .work-card {
-  background: #fff; /* cards pop against brand color */
+  background: #fff;
   border: none;
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
+#work .work-card figcaption h3 { color: #0b0d10; }
+#work .work-card figcaption p { color: #333; }
 
-#work .work-card figcaption h3 {
-  color: #0b0d10;
-}
-#work .work-card figcaption p {
-  color: #333;
+/* ------------------------------
+   10) Misc polish
+---------------------------------*/
+@media (hover: hover) {
+  a:hover { text-decoration: none; }
 }
