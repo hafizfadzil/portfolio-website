@@ -24,16 +24,6 @@
         }
       ]
     },
-    {
-      "site": "hafizfadzil-redirect",
-      "redirects": [
-        {
-          "source": "^/(.*)$",
-          "destination": "https://hafizfadzil.com/$1",
-          "type": 301,
-          "regex": true
-        }
-      ]
-    }
+    
   ]
 }
